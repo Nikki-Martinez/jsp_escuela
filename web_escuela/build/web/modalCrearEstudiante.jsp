@@ -20,7 +20,7 @@
             </div>
             
             <div class="modal-body px-4">
-                <form id="formNuevoEstudiante" method="POST" action="tu_servlet_o_controlador_de_insercion" class="row g-3 needs-validation" novalidate>
+                <form id="formNuevoEstudiante" method="POST" action="srv_crear_estudiante" class="row g-3 needs-validation" novalidate>
                     
                     <h4 class="col-12 mb-4 text-primary border-bottom pb-2">Datos Personales del Estudiante</h4>
 

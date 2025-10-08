@@ -5,6 +5,11 @@
         <group>
             <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/web/index.jsp</file>
             <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/web/estudiantes.jsp</file>
+            <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/src/java/modelo/Estudiante.java</file>
+            <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/web/modalCrearEstudiante.jsp</file>
+            <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/src/java/modelo/TipoSangre.java</file>
+            <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/src/java/modelo/Conexion.java</file>
+            <file>file:/C:/Users/guich/OneDrive/Documentos/PROGRAMACION/CURSO%20PROGRAMACIÓN%20II/WEB_ESCUELA/web_escuela/src/java/controlador/srv_crear_estudiante.java</file>
         </group>
     </open-files>
 </project-private>

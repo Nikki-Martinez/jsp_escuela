@@ -203,6 +203,64 @@
 
         </div>
         <jsp:include page="modalCrearEstudiante.jsp" />
+        <!-- modals para confirmación y error -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalConfirmacionLabel">Operación Exitosa</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        El registro del estudiante ha sido creado exitosamente.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalErrorLabel">Error en la Operación</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="error-message">
+                        Hubo un error al intentar crear el registro. Por favor, inténtelo de nuevo.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const alerta = urlParams.get('alerta');
+                const mensajeError = urlParams.get('mensaje');
+
+                if (alerta === 'success') {
+                    const myModal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+                    myModal.show();
+                    history.replaceState({}, document.title, window.location.pathname);
+                } else if (alerta === 'error') {
+                    if (mensajeError) {
+                        const decodedMessage = decodeURIComponent(mensajeError);
+                        document.getElementById('error-message').innerText = 'Error: ' + decodedMessage;
+                    }
+                    const myModal = new bootstrap.Modal(document.getElementById('modalError'));
+                    myModal.show();
+                    history.replaceState({}, document.title, window.location.pathname);
+                }
+            });
+        </script>
+        <!-- ---- -->
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
