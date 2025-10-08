@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modelo.Estudiante" %>
+<%@page import="javax.swing.table.DefaultTableModel" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,51 +19,50 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
     
     <style>
-        /* Estilos personalizados para el sidebar */
+        
         .sidebar {
-            position: fixed; /* Fija el sidebar a la izquierda */
+            position: fixed; 
             top: 0;
             left: 0;
             bottom: 0;
-            z-index: 1000; /* Asegura que esté por encima del contenido */
+            z-index: 1000; 
             padding: 1rem;
-            width: 250px; /* Ancho fijo para el sidebar */
-            background-color: #343a40; /* Color oscuro como un navbar */
+            width: 250px; 
+            background-color: #343a40; 
             color: white;
             display: flex;
-            flex-direction: column; /* Para colocar el contenido del nav y el footer interno */
-        }
-
-        /* Ajuste para el contenido principal para que no quede detrás del sidebar */
+            flex-direction: column; 
+        } /* <-- LLAVE DE CIERRE CORREGIDA */
+        
         .main-content-wrapper {
-            margin-left: 250px; /* Deja espacio para el sidebar */
+            margin-left: 250px; 
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Para asegurar que el contenido use toda la altura del viewport */
+            min-height: 100vh; 
         }
         
-        /* Contenedor principal de la página */
+        
         .page-content {
-            flex-grow: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+            flex-grow: 1; 
             padding: 20px;
-            padding-bottom: 70px; /* Espacio para que el footer fijo no oculte el contenido */
+            padding-bottom: 70px; 
         }
 
-        /* Estilos para el footer fijo en el contenido */
+        
         .content-footer {
-            position: fixed; /* Fija el footer */
+            position: fixed; 
             bottom: 0;
-            left: 250px; /* Se alinea con el inicio del contenido principal */
+            left: 250px; 
             right: 0;
-            height: 50px; /* Altura del footer */
+            height: 50px; 
             background-color: #f8f9fa;
             border-top: 1px solid #e9ecef;
-            z-index: 1030; /* Puede ser más alto que el sidebar si es necesario */
+            z-index: 1030; 
             padding: 15px;
             text-align: center;
         }
 
-        /* Estilo para el nombre de la escuela */
+        
         .school-brand {
             font-size: 1.25rem;
             font-weight: 700;
@@ -71,7 +72,6 @@
             text-align: center;
         }
 
-        /* Para empujar los elementos de Perfil y Cerrar Sesión hacia abajo */
         .bottom-links {
             margin-top: auto;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -130,19 +130,48 @@
 
                         <thead>
                             <tr>
-                                <th>Carnet</th>
+                                <th class="text-center">Carnet</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
                                 <th>Direccion</th>
-                                <th>Teléfono</th>
+                                <th class="text-center">Teléfono</th>
                                 <th>Correo Electronico</th>
-                                <th>Tipo de Sangre</th>
-                                <th>Fecha de Nacimiento</th>
-                            </tr>
+                                <th class="text-center">Tipo de Sangre</th>
+                                <th class="text-center">Fecha de Nacimiento</th>
+                                </tr>
                         </thead>
-
-                        <tbody>
                             
+                        <tbody>
+                            <% 
+                                Estudiante estudiante = new Estudiante(); 
+                                DefaultTableModel tabla = new DefaultTableModel();
+
+                                tabla = estudiante.leer();
+
+                                for(int t=0; t < tabla.getRowCount(); t++){
+
+                                    out.println("<tr data-id=\""+ tabla.getValueAt(t, 0) +"\" data-idts=\""+ tabla.getValueAt(t, 9) +"\" >");
+
+                                    // Centrado: Carnet
+                                    out.println("<td class='text-center'>"+ tabla.getValueAt(t, 1) +"</td>"); 
+                                    // Sin Centrado: Nombres
+                                    out.println("<td>"+ tabla.getValueAt(t, 2) +"</td>"); 
+                                    // Sin Centrado: Apellidos
+                                    out.println("<td>"+ tabla.getValueAt(t, 3) +"</td>"); 
+                                    // Sin Centrado: Dirección
+                                    out.println("<td>"+ tabla.getValueAt(t, 4) +"</td>"); 
+                                    // Centrado: Teléfono
+                                    out.println("<td class='text-center'>"+ tabla.getValueAt(t, 5) +"</td>"); 
+                                    // Sin Centrado: Correo
+                                    out.println("<td>"+ tabla.getValueAt(t, 6) +"</td>"); 
+                                    // Centrado: Tipo de Sangre
+                                    out.println("<td class='text-center'>"+ tabla.getValueAt(t, 7) +"</td>"); 
+                                    // Centrado: Fecha de Nacimiento
+                                    out.println("<td class='text-center'>"+ tabla.getValueAt(t, 8) +"</td>"); 
+
+                                    out.println("</tr>");  
+                                }
+                            %>          
                         </tbody>
 
                         <tfoot>
@@ -176,7 +205,6 @@
                 responsive: true,
                 lengthMenu: [5, 10, 25, 50, 100],
 
-                // ⭐ TRADUCCIÓN AL ESPAÑOL ⭐
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/2.0.8/i18n/es-ES.json',
                 }

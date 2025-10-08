@@ -123,7 +123,7 @@ public class Estudiante extends Persona {
             parametro.setString(4, getDireccion());
             parametro.setString(5, getTelefono());
             parametro.setString(6, getCorreo_electronico());
-            parametro.setInt(7, getId_sangre()); // Parámetro 7 como INT
+            parametro.setInt(7, getId_sangre()); 
             parametro.setString(8, getFecha_nacimiento());
 
             retorno = parametro.executeUpdate();
@@ -156,7 +156,7 @@ public class Estudiante extends Persona {
             parametro.setString(4, getDireccion());
             parametro.setString(5, getTelefono());
             parametro.setString(6, getCorreo_electronico());
-            parametro.setInt(7, getId_sangre()); // Parámetro 7 como INT
+            parametro.setInt(7, getId_sangre()); 
             parametro.setString(8, getFecha_nacimiento());
             parametro.setInt(9, getId());
 
